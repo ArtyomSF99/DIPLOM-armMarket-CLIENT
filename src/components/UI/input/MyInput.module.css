@@ -1,0 +1,63 @@
+.input_div{
+    width: 100%;
+}
+
+.inputContainer * {
+    box-sizing: border-box;
+}
+.inputContainer {
+    position: relative;
+    width: 100%;
+    font-size: 2.5vh;
+    border-radius: 10px;
+}
+.inputContainer label {
+    position: absolute;
+    left: 3%;
+    top: 30%;
+    transition: .3s;
+    z-index: 1;
+    color: rgb(0, 0, 0, 0.7);
+    font-size: 2.1vh;
+    cursor: text;
+}
+.inputContainer input {
+    padding: 0.8rem;
+    width: 100%;
+    height: 150%;
+    border: 2px solid rgb(0, 0, 0, .3);
+    background: rgb(0, 0, 0, 0);
+    outline: none;
+    border-radius: 5px;
+    font-size: 3vh;
+    transition: .3s;
+    color: rgb(0, 0, 0);
+}
+.inputContainer label:before {
+    content: '';
+    height: 5%;
+    position: absolute;
+    left: 0;
+    top: 10%;
+    width: 100%;
+    z-index: -1;
+}
+.inputContainer input:not(:placeholder-shown),
+.inputContainer input:focus {
+    border: 2px solid #adf2f7;
+
+}
+.inputContainer input:not(:placeholder-shown) + label,
+.inputContainer input:focus + label {
+    top: -30%;
+    color: #0b113e;
+    font-size: 2.5vh;
+}
+.inputContainer input::placeholder {
+    font-size: 2.1vh;
+    opacity: 0;
+    transition: .3s;
+}
+.inputContainer input:focus::placeholder {
+    opacity: 1;
+}

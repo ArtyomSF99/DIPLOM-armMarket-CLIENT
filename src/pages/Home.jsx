@@ -1,0 +1,45 @@
+import React, { useState } from 'react'
+import {useDispatch, useSelector} from "react-redux"
+import { Link } from 'react-router-dom'
+import MyButton from '../components/UI/button/MyButton'
+import Loader from '../components/UI/Loader/Loader'
+import AuthService from '../services/AuthService'
+
+export default function Home() {
+    const[isLoading, setIsLoading] = useState(false)
+    const dispatch = useDispatch()
+  const isAuth = useSelector( state => state.isAuth.isAuth)
+  
+
+  const change = () =>{
+    console.log(isAuth)
+  }
+  const test = async () =>{
+        setIsLoading(true)
+        const response = await AuthService.getUsers()
+        console.log(response.data)
+        setIsLoading(false)
+  }
+
+  const LogOut = async () =>{
+        setIsLoading(true)
+        const response = await AuthService.logout()
+        localStorage.removeItem('token')
+        dispatch({type:"CHANGE_AUTH", payload:!isAuth})
+        dispatch({type:"DELETE_USER", payload:{}})
+  }
+
+  return (
+        isLoading
+        ?<Loader/>
+        :<div>
+        <button onClick={change}>change</button> 
+        <button onClick={test}>1234656</button> 
+        <button onClick={LogOut}>LogOut</button>
+        <Link to={`/category-management`}>
+            <MyButton>CategoryManagement</MyButton>
+        </Link>
+    </div>
+    
+  )
+}

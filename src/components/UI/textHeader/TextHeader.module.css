@@ -1,0 +1,36 @@
+.tracking_in_expand {
+  
+  font-size: 2.9vw;
+  background: -webkit-linear-gradient(#b108c8,#2420d0, #38e4f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+	-webkit-animation: tracking_in_expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking_in_expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+            z-index: 99;
+}
+
+ @-webkit-keyframes tracking_in_expand {
+    0% {
+      letter-spacing: -0.5em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes tracking_in_expand {
+    0% {
+      letter-spacing: -0.5em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
