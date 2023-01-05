@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import CategoriesService from '../services/CategoriesService'
-import MyDisabledSubmit from './UI/button/MyDisabledSubmit'
-import MySubmit from './UI/button/MySubmit'
-import MyInput from './UI/input/MyInput'
+import CategoriesService from '../../services/CategoriesService'
+import MyDisabledSubmit from '../UI/button/MyDisabledSubmit'
+import MySubmit from '../UI/button/MySubmit'
+import MyInput from '../UI/input/MyInput'
 
-export default function UpdateCategoryProperty({parent, setGlobalParent}) {
+export default function CreateCategory({category, setSelectedCategory}) {
     const[categoryName, setCategoryName] = useState('')
     const dispatch = useDispatch()
     
     const createCategory = async () =>{
-        const response = await CategoriesService.createCategory(categoryName, parent)
+        const response = await CategoriesService.createCategory(categoryName, category.name, category.parent)
         dispatch({type:"SAVE_NEW_CATEGORY", payload:response.data[0]})
         console.log(response.data)
         setCategoryName('')
@@ -23,9 +23,9 @@ export default function UpdateCategoryProperty({parent, setGlobalParent}) {
         </div>
         <div className='management_parent_info'>
            <div className='management_parent_info_header'>Մայր կատեգորիա:</div>
-            <h3 className='management_parent_info_parent'>{parent ?`${parent}`: ' դաշտը դատարկ է'}</h3> 
+            <h3 className='management_parent_info_parent'>{category.name ?`${category.name}`: ' դաշտը դատարկ է'}</h3> 
             <div className='management_parent_info_clear'>
-            <img onClick={() => setGlobalParent("")} src='/img/remove.svg' width={'70%'} height={'100%'}/>  
+            <img onClick={() => setSelectedCategory({})} src='/img/remove.svg' width={'70%'} height={'100%'}/>  
             </div> 
               
     

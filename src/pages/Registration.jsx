@@ -181,7 +181,7 @@ export default function Registration() {
             <div className='input_error'>{passwordError}</div>
         </div>
         <div className='reg_container_icon' >
-            <div style={{width:'70%'}}>
+            <div style={{width:'70%', height:'100%'}}>
             <MyInput  value={confirmPassword} inputname="Կրկնել գաղտնաբառը" onChange={(e) => confirmPasswordHandler(e)} type='password' placeholder='Կրկնեք Ձեր գաղտնաբառը...'/>
             </div>
             
@@ -219,7 +219,7 @@ export default function Registration() {
             <div className='reg_to_log'>
             {formValid
             ?<div className='reg_submit_container'>
-            <MySubmit onSubmit={Registration} type="submit">Գրանվել</MySubmit>
+            <MySubmit onSubmit={Registration} type="submit">Գրանցվել</MySubmit>
             </div>
             :<div className='reg_submit_container'>
             <MyDisabledSubmit>Գրանցվել</MyDisabledSubmit>

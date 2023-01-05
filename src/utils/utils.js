@@ -3,9 +3,14 @@ export class Utils {
         return array.filter(el => el.parent.length === 0)
     }
     static getNextCategories(array, parent) {
-        return array.filter(el => el.parent === parent)
+        if(parent === ""){
+            return array.filter(el => el.parent === null)
+        }else{
+             return array.filter(el => el.parent === parent)
+        }
+       
     }
-    static getCategoryInfo(array, category_id) {
+    static getCategoryAttributes(array, category_id) {
         return array.filter(el => el.category_id === category_id)
     }
     

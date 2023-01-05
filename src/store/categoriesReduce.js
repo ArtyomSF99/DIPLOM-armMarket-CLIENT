@@ -1,6 +1,6 @@
 const defaultState = {
     categories: [],
-    categoriesInfo: [],
+    attributes: [],
 }
 
 
@@ -10,8 +10,10 @@ export const categoriesReducer = (state = defaultState, action) =>{
             return {...state, categories: action.payload}
         case "SAVE_NEW_CATEGORY":
             return {...state, categories: [...state.categories, action.payload]}
-        case "SAVE_CATEGORIES_INFO":
-            return {...state, categoriesInfo: action.payload}
+        case "SAVE_ATTRIBUTES":
+            return {...state, attributes: action.payload}
+        case "SAVE_NEW_ATTRIBUTE":
+            return {...state, attributes: [...state.categories, action.payload]}
       default:
         return state
     }

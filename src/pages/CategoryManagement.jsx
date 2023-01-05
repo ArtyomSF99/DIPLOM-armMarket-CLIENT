@@ -1,30 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import CategoriesService from '../services/CategoriesService'
 import {useDispatch, useSelector} from "react-redux"
-import { getMainCategories, Utils } from '../utils/utils'
+import { Utils } from '../utils/utils'
 import TextHeader from '../components/UI/textHeader/TextHeader'
 import MyList from '../components/UI/list/MyList'
 import Loader from '../components/UI/Loader/Loader'
-import MyObjectList from '../components/UI/list/MyObjectList'
 import MyManagementButton from '../components/UI/button/MyManagementButton'
-import CategoryManagmentSelect from '../components/CategoryManagmentSelect'
+import CategoryManagmentSelect from '../components/categoryManagement/CategoryManagmentSelect'
+import MyAttributesList from '../components/UI/list/MyAttributesList'
 
 
 export default function CategoryManagement() {
-  const[mainCategoryQuery, setMainCategoryQuery] = useState("")
-  const[secondCategoryQuery, setSecondCategoryQuery] = useState("")
-  const[thirdCategoryQuery, setThirdCategoryQuery] = useState("")
   const[mainCategories, setMainCategories] = useState([])
   const[secondCategories, setSecondCategories] = useState([])
   const[thridCategories, setThridCategories] = useState([])
-  const[properties, setProperties] = useState([]) 
+  const[categoryAttributes, setCategoryAttributes] = useState([])
+  const[attribute, setAttribute] = useState({})
   const[isLoading, setIsLoading] = useState(true)
   const[value, setValue] = useState(0)
-  const[globalParent, setGlobalParent] = useState('')
-  const[categoryId, setCategoryId] = useState(0)
+  const[selectedCatgory, setSelectedCategory] = useState({})
+
   const dispatch = useDispatch()
   const categories = useSelector(state => state.categories.categories)
-  const categoriesInfo = useSelector(state => state.categories.categoriesInfo)
+  const attributes = useSelector(state => state.categories.attributes)
   useEffect(() =>{
     
     CategoriesService.getCategories().then(response =>{
@@ -32,8 +30,8 @@ export default function CategoryManagement() {
       dispatch({type:"SAVE_CATEGORIES", payload:response.data})
       setMainCategories(Utils.getMainCategories(response.data))
     }).then(() =>{
-      CategoriesService.getCategoriesInfo().then(response =>{
-        dispatch({type:"SAVE_CATEGORIES_INFO", payload:response.data})
+      CategoriesService.getAttributes().then(response =>{
+        dispatch({type:"SAVE_ATTRIBUTES", payload:response.data})
       }).then(() =>setIsLoading(false))
     }).catch(e => console.log(e))
     
@@ -41,40 +39,40 @@ export default function CategoryManagement() {
 
   const test = () => {
    
-    console.log(categories)
+    console.log(attribute)
   }
 
-  const showSecondCategories = (parent, category_id) =>{
-    setSecondCategories(Utils.getNextCategories(categories, parent))
-    const category_prop = Utils.getCategoryInfo(categoriesInfo, category_id)
-    if(category_prop.length !== 0){
-      setProperties(category_prop[0])
+  const showSecondCategories = (category) =>{
+    setSecondCategories(Utils.getNextCategories(categories, category.name))
+    const selected_attributes = Utils.getCategoryAttributes(attributes, category.id)
+    if(selected_attributes.length !== 0){
+      setCategoryAttributes(selected_attributes)
     }else{
-      setProperties({})
+      setCategoryAttributes([])
     }
-    setGlobalParent(parent) 
-    setCategoryId(category_id)
+    setSelectedCategory(category)
     setThridCategories([])
   }
 
-  const showThridCategories = (parent, category_id) =>{
-    setThridCategories(Utils.getNextCategories(categories, parent))
-    const category_prop = Utils.getCategoryInfo(categoriesInfo, category_id)
-    if(category_prop.length !== 0){
-      setProperties(category_prop[0])
+  const showThridCategories = (category) =>{
+    setThridCategories(Utils.getNextCategories(categories, category.name))
+    const selected_attributes = Utils.getCategoryAttributes(attributes, category.id)
+    if(selected_attributes.length !== 0){
+      setCategoryAttributes(selected_attributes)
     } else{
-      setProperties({})
+      setCategoryAttributes([])
     }
-    setGlobalParent(parent)
-    setCategoryId(category_id)  
+    setSelectedCategory(category)
   }
-  const showProperties = (parent, category_id) =>{
-    const category_prop = Utils.getCategoryInfo(categoriesInfo, category_id)
-    if(category_prop.length !== 0){
-      setProperties(category_prop[0])
+  const showProperties = (category) =>{
+    const selected_attributes = Utils.getCategoryAttributes(attributes, category.id)
+    if(selected_attributes.length !== 0){
+      setCategoryAttributes(selected_attributes)
     } 
-    setGlobalParent(parent)
-    setCategoryId(category_id)
+    else{
+      setCategoryAttributes([])
+    }
+    setSelectedCategory(category)
     }
 
 
@@ -114,7 +112,7 @@ export default function CategoryManagement() {
 
       </div>
       <div className='show_categories_container'>
-      <MyObjectList object={properties} emptyText="Ստանդարտ արժեքներ չկան"/>
+      <MyAttributesList categoryAttributes={categoryAttributes} setAttribute={setAttribute} emptyText="Ստանդարտ արժեքներ չկան"/>
 
       </div>
       </div>
@@ -145,7 +143,7 @@ export default function CategoryManagement() {
        
       </div>
       <div className='category_management_moderator_container'>
-        <CategoryManagmentSelect id = {value} parent={globalParent} setGlobalParent={setGlobalParent} category_id={categoryId}/>
+        <CategoryManagmentSelect id = {value} category={selectedCatgory} attribute={attribute} setAttribute={setAttribute} setSelectedCategory={setSelectedCategory}/>
       </div>
       </div>
      

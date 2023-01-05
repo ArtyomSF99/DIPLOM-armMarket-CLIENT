@@ -34,10 +34,16 @@ export default function Home() {
         ?<Loader/>
         :<div>
         <button onClick={change}>change</button> 
-        <button onClick={test}>1234656</button> 
+        <button onClick={test}>1234656</button>
+        <Link to={`/login`}>
         <button onClick={LogOut}>LogOut</button>
+        </Link>
+     
         <Link to={`/category-management`}>
             <MyButton>CategoryManagement</MyButton>
+        </Link>
+        <Link to={`/add-product`}>
+            <MyButton>AddProduct</MyButton>
         </Link>
     </div>
     

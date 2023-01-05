@@ -1,21 +1,19 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import CategoriesService from '../services/CategoriesService'
-import MyDisabledSubmit from './UI/button/MyDisabledSubmit'
-import MySubmit from './UI/button/MySubmit'
-import MyInput from './UI/input/MyInput'
+import CategoriesService from '../../services/CategoriesService'
+import MyDisabledSubmit from '../UI/button/MyDisabledSubmit'
+import MySubmit from '../UI/button/MySubmit'
+import MyInput from '../UI/input/MyInput'
 
-export default function UpdateCategory({parent, category_id, setGlobalParent}) {
+export default function UpdateCategory({category, setSelectedCategory}) {
     const[categoryName, setCategoryName] = useState('')
     const dispatch = useDispatch()
     
     const updateCategory = async () =>{
-        const response = await CategoriesService.updateCategory(category_id,categoryName, parent)
+        const response = await CategoriesService.updateCategory(category.id,categoryName, category.name)
         dispatch({type:"SAVE_NEW_CATEGORY", payload:response.data[0]})
         console.log(response.data)
         setCategoryName('')
-        console.log(category_id)
-        console.log(parent)
     }
 
   return (
@@ -25,9 +23,9 @@ export default function UpdateCategory({parent, category_id, setGlobalParent}) {
         </div>
         <div className='management_parent_info'>
            <div className='management_parent_info_header'>Փոփոխվող կատեգորիան:</div>
-            <h3 className='management_parent_info_parent'>{parent ?`${parent}`: ' դաշտը դատարկ է'}</h3> 
+            <h3 className='management_parent_info_parent'>{category.name ?`${category.name}`: ' դաշտը դատարկ է'}</h3> 
             <div className='management_parent_info_clear'>
-            <img onClick={() => setGlobalParent("")} src='/img/remove.svg' width={'70%'} height={'100%'}/>  
+            <img onClick={() => setSelectedCategory({})} src='/img/remove.svg' width={'70%'} height={'100%'}/>  
             </div> 
               
     
@@ -35,7 +33,7 @@ export default function UpdateCategory({parent, category_id, setGlobalParent}) {
         </div>
         
         <div className='management_button_container'>
-            {categoryName.length=== 0 || !parent
+            {categoryName.length=== 0 || !category.name
             ?<MyDisabledSubmit>Փոխել կատեգորիայի անվանումը</MyDisabledSubmit>
             :<MySubmit onClick={updateCategory}>Փոխել կատեգորիայի անվանումը</MySubmit>}
             
