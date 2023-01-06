@@ -6,6 +6,8 @@ import AuthService from "./services/AuthService";
 import {useDispatch, useSelector} from "react-redux"
 import './styles/App.css';
 import Loader from "./components/UI/Loader/Loader";
+import CategoriesService from "./services/CategoriesService";
+import { Utils } from "./utils/utils";
 
 
 
@@ -26,12 +28,19 @@ function App() {
         
       }
       ).then(() =>{
-        
           setIsLoading(false)
-        
       })
     }
-  }, [])
+    CategoriesService.getCategories().then(response =>{
+      
+      dispatch({type:"SAVE_CATEGORIES", payload:response.data})
+    
+    }).then(() =>{
+      CategoriesService.getAttributes().then(response =>{
+        dispatch({type:"SAVE_ATTRIBUTES", payload:response.data})
+      }).then(() =>setIsLoading(false))
+    }).catch(e => console.log(e))
+  }, [ dispatch])
   return (
       
       <div className="App">

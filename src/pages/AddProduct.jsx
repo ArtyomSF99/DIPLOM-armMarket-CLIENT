@@ -4,17 +4,17 @@ import SelectProductCatgory from '../components/products/SelectProductCatgory'
 
 export default function AddProduct() {
     const[selected, setSelected] = useState(false)
-    const[selectedCatgory, setSelectedCategory] = useState('')
+    const[selectedCategory, setSelectedCategory] = useState('')
 
 
 
   return (
     <div className='main_responsiv'>
         <div className='add_product_main'>
-            {!selected
-            ?<SelectProductCatgory/>
-            :<AddNewProduct/>
-            }
+           
+          <SelectProductCatgory selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+      
+          
         </div>
         <button onClick={() => setSelected(!selected)}>test</button>
     </div>
