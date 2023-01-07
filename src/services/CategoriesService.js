@@ -88,14 +88,5 @@ export default class CategoriesService {
       
         
     }
-    static async getUsers() {
-        return $api.get('/users')
-    }
-    static async logout(){
-        return $api.post('/logout')
-    }
-    static async test5(){
-        return 'hello'
-    }
 
 }

@@ -581,7 +581,6 @@ html{
 }
 .product_input_container{
     width: 80%;
-    height: 50vh;
     background-color: azure;
     border-radius: 0.5em;
 }
