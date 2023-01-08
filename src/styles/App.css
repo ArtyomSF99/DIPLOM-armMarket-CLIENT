@@ -527,7 +527,38 @@ html{
     width: 80vh;
     height: 100%;
     background-color: white;
+    -webkit-animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
+
+@-webkit-keyframes scale-out-center {
+    0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+      opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1);
+              transform: scale(1);
+ 
+      opacity: 1;
+    }
+  }
+  @keyframes scale-out-center {
+    0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+      opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+     
+      opacity: 1;
+    }
+  }
+  
+
 .show_product_images{
     display: flex;
     align-items: center;
@@ -583,6 +614,16 @@ html{
     width: 80%;
     background-color: azure;
     border-radius: 0.5em;
+    box-shadow: 0 0 0.9em 0.1em rgba(2, 3, 4, 0.1);
+
+}
+
+.product_send_btns{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    width: 40%;
+    height: 5vh;
+
 }
 
 

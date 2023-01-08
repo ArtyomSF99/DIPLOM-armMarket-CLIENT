@@ -10,6 +10,7 @@ export default function MyProductSecondCatgoryList({array,categories,selectedCat
     const test = Utils.getNextCategories(categories, name)
     if(test.length ===0) {
       setComponentPointer(4)
+      setSelectedCategory(name)
     }else{
       setComponentPointer(2)
       setSelectedCategory(name)
