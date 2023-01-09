@@ -504,7 +504,7 @@ html{
     align-items: center;
     margin-top: 5em;
     padding: 2.5em;
-    background-color: rgba(255, 255, 255, 0.76);
+    background-color: rgb(249, 247, 247);
     
 }
 .add_product_container{
@@ -625,7 +625,15 @@ html{
     height: 5vh;
 
 }
-
+.all_products{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vh;
+    width: 100vh;
+    background-color: rgb(249, 247, 247);
+}
 
 .my_hr{
     width: 80%;

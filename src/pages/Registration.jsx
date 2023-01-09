@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import MyButton from '../components/UI/button/MyButton'
 import MySubmit from '../components/UI/button/MySubmit'
 import MyInput from '../components/UI/input/MyInput'
@@ -45,7 +45,7 @@ export default function Registration() {
     const[phoneError, setPhoneError] = useState('Լրացրեք դաշտը։Օրինակ՝ 099999999')
     const[regionError, setRegionError] = useState('Ընտրեք համայնքը')
     const[connectionEmailError, setConnectionEmailError] = useState('Email կապնվելու համար')
-    
+    const navigate = useNavigate()
   
 
     useEffect(() => {
@@ -151,6 +151,7 @@ export default function Registration() {
        dispatch({type:"SAVE_USER", payload:response.data.user})
        dispatch({type:"CHANGE_AUTH", payload:!isAuth})
        setIsLoading(false)
+       navigate('/home')
     }
 
   return (

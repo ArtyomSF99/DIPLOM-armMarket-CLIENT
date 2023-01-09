@@ -18,6 +18,8 @@ export default class ProductService {
         }
     }
 
-    
+    static async getAllProducts() {
+        return $api.get('/all-products')
+    }
 
 }

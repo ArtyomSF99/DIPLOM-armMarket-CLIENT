@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useContext } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import MyButton from '../components/UI/button/MyButton';
 import MySubmit from '../components/UI/button/MySubmit';
 import MyInput from '../components/UI/input/MyInput';
@@ -24,7 +24,7 @@ const Login = () => {
   const[formValid, setFormValid] = useState(false)
   const[serverMessage, setServerMessage] = useState('')
   const[isLoading, setIsLoading] = useState(false)
-  
+  const navigate = useNavigate()
  
 
   useEffect(() => {
@@ -83,6 +83,7 @@ const Login = () => {
         dispatch({type:"SAVE_USER", payload:response.data.user})
         dispatch({type:"CHANGE_AUTH", payload:!isAuth})
         setIsLoading(false)
+        navigate(`/home`)
     }
     
     const change = () =>{

@@ -11,7 +11,7 @@ import thunk from 'redux-thunk';
 const rootReducer = combineReducers({
     user: userReducer,
     users: usersReducer,
-    produects: productsReducer,
+    products: productsReducer,
     isAuth: authReducer,
     categories: categoriesReducer
 })

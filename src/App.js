@@ -8,6 +8,7 @@ import './styles/App.css';
 import Loader from "./components/UI/Loader/Loader";
 import CategoriesService from "./services/CategoriesService";
 import { Utils } from "./utils/utils";
+import ProductService from "./services/ProductService";
 
 
 
@@ -27,9 +28,7 @@ function App() {
         console.log(isAuth)
         
       }
-      ).then(() =>{
-          setIsLoading(false)
-      })
+      )
     }
     CategoriesService.getCategories().then(response =>{
       
@@ -39,6 +38,11 @@ function App() {
       CategoriesService.getAttributes().then(response =>{
         dispatch({type:"SAVE_ATTRIBUTES", payload:response.data})
       }).then(() =>setIsLoading(false))
+    }).then(() =>{
+      ProductService.getAllProducts().then(response =>{
+        dispatch({type:"SAVE_PRODUCTS", payload:response.data})
+        console.log(response.data)
+      })
     }).catch(e => console.log(e))
   }, [ dispatch])
   return (
