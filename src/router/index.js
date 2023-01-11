@@ -1,4 +1,5 @@
 
+import ProductById from "../pages/ProductById";
 import AddProduct from "../pages/AddProduct";
 import CategoryManagement from "../pages/CategoryManagement";
 import Home from "../pages/Home";
@@ -15,6 +16,7 @@ export const privateRoutes = [
     {path:'/add-product', component: <AddProduct/>, exact: true },
     {path:'/my-products', component: <MyProducts/>, exact: true },
     {path:'/main-products', component: <MainProducts/>, exact: true },
+    {path: '/product/:id', component: <ProductById/>, exact: true},
 ]
 
 export const publicRoutes = [
@@ -23,4 +25,5 @@ export const publicRoutes = [
     {path:'/home', component: <Home/>, exact: true },
     {path:'/category-management', component: <CategoryManagement/>, exact: true },
     {path:'/main-products', component: <MainProducts/>, exact: true },
+    {path: '/product/:id', component: <ProductById/>, exact: true},
 ]

@@ -21,5 +21,8 @@ export default class ProductService {
     static async getAllProducts() {
         return $api.get('/all-products')
     }
+    static async getProductById(id) {
+        return $api.get(`/product/${id}`)
+    }
 
 }

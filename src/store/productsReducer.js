@@ -1,5 +1,5 @@
 const defaultState = {
-    produects: []
+    products: []
 }
 
 export const productsReducer = (state = defaultState, action) =>{

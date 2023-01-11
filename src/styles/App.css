@@ -73,6 +73,7 @@ html{
     -webkit-animation: slide-in-blurred-left 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
 	        animation: slide-in-blurred-left 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
 }
+
 .reg_to_log{
     display: flex;
     flex-direction: column;
@@ -635,6 +636,18 @@ html{
     background-color: rgb(249, 247, 247);
 }
 
+.product_by_id_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin-top: 2em;
+    padding: 1em;
+    width: 50%;
+    background-color: rgb(249, 247, 247);
+}
+
 .my_hr{
     width: 80%;
     height: 0;
@@ -658,3 +671,24 @@ h6{
 div{
     font-size: 3.0vh;
 }
+.link{
+    text-decoration: none;
+    color: rgb(22, 21, 21);
+  }
+
+  .fade-enter {
+    opacity: 0;
+  }
+  
+  .fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+  }
+  .fade-exit {
+    opacity: 1;
+    }
+    
+    .fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+    }

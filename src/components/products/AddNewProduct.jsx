@@ -52,7 +52,11 @@ export default function AddNewProduct({categories, attributes, selectedCategory}
         res = true
       }
     }
+    
     if(readyAttributes.length === categoryAttributes.length && res){
+      setAttributesError(false)
+    }
+    else if(categoryAttributes.length === 0){
       setAttributesError(false)
     }
     else{
@@ -146,6 +150,7 @@ export default function AddNewProduct({categories, attributes, selectedCategory}
       </div>
       
       </form>
+      <button onClick={test}>test</button>
   </div>
         )   
 }
