@@ -75,3 +75,48 @@
         -webkit-transform: translateZ(20px);
                 transform: translateZ(20px); 
 }
+
+.block_loader{
+        width: 2em;
+        height: 2em;
+        border-radius: 50%;
+   
+        border-top: 0.2em solid black;
+        -webkit-animation: ping  .7s infinite linear;
+	        animation: ping  .7s infinite linear;
+}
+
+@-webkit-keyframes ping {
+        0% {
+                -webkit-transform: rotate(0);
+                        transform: rotate(0);
+                opacity: 0.8;
+              }
+              80% {
+                -webkit-transform: rotate(-180deg);
+                        transform: rotate(-180deg);
+                opacity: 0.4;
+              }
+              100% {
+                      -webkit-transform: rotate(-360deg);
+                      transform: rotate(-360deg);
+                opacity: 0.2;
+              }
+      }
+      @keyframes ping {
+        0% {
+          -webkit-transform: rotate(0);
+                  transform: rotate(0);
+          opacity: 0.8;
+        }
+        80% {
+          -webkit-transform: rotate(-180deg);
+                  transform: rotate(-180deg);
+          opacity: 0.4;
+        }
+        100% {
+                -webkit-transform: rotate(-360deg);
+                transform: rotate(-360deg);
+          opacity: 0.2;
+        }
+      }

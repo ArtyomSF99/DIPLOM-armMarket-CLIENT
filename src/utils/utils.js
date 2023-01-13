@@ -2,6 +2,21 @@ export class Utils {
     static getMainCategories(array) {
         return array.filter(el => el.parent.length === 0)
     }
+    static getOneCategory(array, element) {
+        return array.filter(el => el.name === element)
+    }
+    static getAllSubCategories(array, element){
+        let subCategories = []
+        let firstSubCategoryArray = array.filter(el => el.parent === element)
+        for(let i =0; i<firstSubCategoryArray.length; i++){
+            subCategories.push(firstSubCategoryArray[i])
+            let subCategoryArray = array.filter(el => el.parent === firstSubCategoryArray[i].name )
+            for(let j =0; j<subCategoryArray.length; j++){
+                subCategories.push(subCategoryArray[j])
+            }
+        }
+        return subCategories
+    }
     static getNextCategories(array, parent) {
         if(parent === ""){
             return array.filter(el => el.parent === null)

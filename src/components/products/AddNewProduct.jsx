@@ -67,10 +67,7 @@ export default function AddNewProduct({categories, attributes, selectedCategory}
   const test = () =>{
     // const newPath = `${location.pathname}/gsagads`;
     // console.log(newPath)
-       console.log(readyAttributes)
-       console.log(categoryAttributes)
-       console.log(attributeComponents)
-       console.log(attributesError)
+      console.log(JSON.stringify(productDiscription))
     //   window.location.replace(newPath);
     // navigate('/home')
   }
@@ -138,7 +135,7 @@ export default function AddNewProduct({categories, attributes, selectedCategory}
       <ProductImage showImagesArray={showImagesArray} setShowImagesArray={setShowImagesArray} imgArray={imgArray} setImgArray={setImgArray}/>
       <div className="product_input_container">
       <AttributeInput attribute={{attribute_name:'Անվանում'}} value={productName} setValue={setProductName}/>
-      <AttributeInput attribute={{attribute_name:'Արժեքը'}} value={productPrice} setValue={setProductPrice}/>
+      <AttributeInput attribute={{attribute_name:'Արժեքը'}} value={productPrice} setValue={setProductPrice} type="number"/>
 
       {attributeComponents}
       <AttributeTextArea attribute={{attribute_name:'Նկարագրություն'}} productDiscription={productDiscription} setProductDiscription={setProductDiscription}/>

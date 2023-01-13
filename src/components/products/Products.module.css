@@ -75,6 +75,7 @@
   }
 
   .product_card{
+    margin: 0.5em;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -120,7 +121,7 @@
   }
 
   .product_images_container{
-    width: 80%;
+    width: 60%;
     height: 40vh;
 
     display: flex;
@@ -131,6 +132,7 @@
   .product_images_main{
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
     height: 90%;
   }
@@ -238,4 +240,13 @@
 
 .img_cont{
   width: 100vh;
+}
+
+.product_images_container_loader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
 }

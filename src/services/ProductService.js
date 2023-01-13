@@ -24,5 +24,18 @@ export default class ProductService {
     static async getProductById(id) {
         return $api.get(`/product/${id}`)
     }
+    static async getProductsByCategoryId(id, subCategories) {
+        let params = ""
+        for(let i =0; i<subCategories.length; i++){
+            if(i ===0){
+                params +="?"
+            }
+            params += `category_id_${i}=${subCategories[i].id}`
+            if(i !== subCategories.length){
+                params +="&&"
+            }
+        }
+        return $api.get(`/products/${id}${params}`)
+    }
 
 }
