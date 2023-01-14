@@ -7,6 +7,7 @@ import MyAvatar from "../components/UI/avatar/MyAvatar";
 import MyProductButton from "../components/UI/button/MyProductButton";
 import { API_URL } from "../http";
 import BlockLoader from "../components/UI/Loader/BlockLoader";
+import { Link } from "react-router-dom";
 
 export default function ProductById() {
   const params = useParams();
@@ -78,18 +79,24 @@ export default function ProductById() {
         {product.product_user ? (
           <div className="product_by_id_user_container">
             {product.product_user.avatar_path ? (
-              <div>
+              <div className="product_by_id_user_avatar">
                 <img
                   src={`${API_URL}/${product.product_user.avatar_path}`}
                   alt="avatar"
                 />
               </div>
             ) : (
+              <div className="product_by_id_user_avatar">
               <MyAvatar name={product.product_user.first_name} />
+              </div>
+              
             )}
+            <Link className="link" to={`/user-profile/${product.product_params.user_id}`}>
             <div className="product_by_id_user_name">
               {`${product.product_user.first_name} ${product.product_user.last_name}`}
             </div>
+            </Link>
+          
 
             <div className="product_by_id_user_contacts">
               <div className="product_by_id_user_info_key">

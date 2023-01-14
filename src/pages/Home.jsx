@@ -38,7 +38,7 @@ export default function Home() {
         <button onClick={change}>change</button> 
         <button onClick={test}>1234656</button>
         <Link to={`/login`}>
-        <button onClick={LogOut}>LogOut</button>
+        <MyButton onClick={LogOut}>LogOut</MyButton>
         </Link>
      
         <Link to={`/category-management`}>
@@ -49,6 +49,9 @@ export default function Home() {
         </Link>
         <Link to={`/main-products`}>
             <MyButton>All Products</MyButton>
+        </Link>
+        <Link to={`/main-products`}>
+            <MyButton>My Profile</MyButton>
         </Link>
     </div>
     

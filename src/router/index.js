@@ -7,6 +7,8 @@ import Login from "../pages/Login";
 import MainProducts from "../pages/MainProducts";
 import MyProducts from "../pages/MyProducts";
 import Registration from "../pages/Registration";
+import MyProfile from "../pages/MyProfile";
+import UserProfile from "../pages/UserProfile";
 
 
 
@@ -17,6 +19,8 @@ export const privateRoutes = [
     {path:'/my-products', component: <MyProducts/>, exact: true },
     {path:'/main-products', component: <MainProducts/>, exact: true },
     {path: '/product/:id', component: <ProductById/>, exact: true},
+    {path: '/my-profile/:id', component: <MyProfile/>, exact: true},
+    {path: '/user-profile/:id', component: <UserProfile/>, exact: true},
 ]
 
 export const publicRoutes = [
@@ -26,4 +30,5 @@ export const publicRoutes = [
     {path:'/category-management', component: <CategoryManagement/>, exact: true },
     {path:'/main-products', component: <MainProducts/>, exact: true },
     {path: '/product/:id', component: <ProductById/>, exact: true},
+    {path: '/user-profile/:id', component: <UserProfile/>, exact: true},
 ]
