@@ -117,3 +117,20 @@
     word-break: break-all;
     border-radius: 1em;
   }
+
+  .category_list_main{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 3%;
+    background-color: #09c409;
+    color: white;
+    font-size: 0.7em;
+    word-break: break-all;
+    border-radius: 1em; 
+  }

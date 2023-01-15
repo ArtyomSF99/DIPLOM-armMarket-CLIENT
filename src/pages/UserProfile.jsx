@@ -4,11 +4,15 @@ import ProfileOpinion from '../components/profile/ProfileOpinion'
 import ProfileProducts from '../components/profile/ProfileProducts'
 import UserInfo from '../components/profile/UserInfo'
 import ProfileSelectButton from '../components/UI/button/ProfileSelectButton'
+import LoaderFullScreen from '../components/UI/Loader/LoaderFullScreen'
+import MyModal from '../components/UI/modal/MyModal'
 import UserService from '../services/UserService'
 
 
 export default function UserProfile() {
     const[user, setUser] = useState({})
+    const[myModal, setMyModal] = useState(false)
+    const[isLoading, setIsLoading] = useState(true)
     const[indexShow, setIndexShow] = useState(0)
     const params = useParams();
 
@@ -16,12 +20,14 @@ export default function UserProfile() {
         UserService.getUserById(params.id).then(response =>{
             setUser(response.data)
             console.log(response.data)
-        })
+        }).then(() => setIsLoading(false))
    },[]) 
 
 
   return (
-    <div className='main_responsiv'>
+    isLoading
+    ?<LoaderFullScreen/>
+    :<div className='main_responsiv'>
     <div className='profile_main_container'>
     <div className='profile_main_discription'>
       {user.user && <UserInfo user={user.user}/>}  
@@ -40,7 +46,7 @@ export default function UserProfile() {
     </div>    
    
     </div>
-    
+   
   
     {indexShow===0 &&<ProfileOpinion/>}
     {indexShow===1 &&<ProfileProducts products={user.user_products}/>}
@@ -48,7 +54,10 @@ export default function UserProfile() {
    
     </div>
     </div>
-    <button onClick={() => console.log(user)}>test</button>
+    <MyModal  visible={myModal} setVisible={setMyModal}>
+    <div>hello</div>
+    </MyModal>
+    <button onClick={() => setMyModal(!myModal)}>test</button>
     </div>
   )
 }

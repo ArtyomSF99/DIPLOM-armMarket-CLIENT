@@ -55,5 +55,44 @@ export class Utils {
         }
         return `${hours}:${minutes}`
     }
-    
+    static getSortedArrayByTime(array){
+           const res = array.sort(function(a, b) {
+            let timeA = a.exhibition_time.split(':');
+            let timeB = b.exhibition_time.split(':');
+            let dateA = new Date();
+            let dateB = new Date();
+            dateA.setHours(timeA[0]);
+            dateA.setMinutes(timeA[1]);
+            dateB.setHours(timeB[0]);
+            dateB.setMinutes(timeB[1]);
+            return dateA - dateB;
+          })
+          return res
+    }
+    static getSortedArrayByDate(array){
+        const res =array.sort(function(a, b) {
+            return new Date(b) - new Date(a);
+          });
+          return res
+    }
+    static getSortedArrayByName(array){
+        const res = array.sort(function(a, b) {
+            let nameA = a.product_name.toUpperCase();
+            let nameB = b.product_name.toUpperCase();
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+            return 0;
+          });
+          return res
+    }
+    static getSortedArrayByPrice(array){
+        const res = array.sort((function(a, b) {
+            return a.product_price - b.product_price;
+          }))
+          return res
+    }
 }

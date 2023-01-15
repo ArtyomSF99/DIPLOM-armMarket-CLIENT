@@ -9,8 +9,6 @@
     "assert": "^2.0.0",
     "axios": "^1.2.1",
     "buffer": "^6.0.3",
-    "iconv-lite": "^0.6.3",
-    "popmotion": "^11.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",

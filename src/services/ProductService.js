@@ -35,7 +35,10 @@ export default class ProductService {
                 params +="&&"
             }
         }
-        return $api.get(`/products/${id}${params}`)
+        
+        return $api.get(`/category-products/${id}${params}`)
     }
-
+    static async getProductByQuery(query) {
+        return $api.get(`/products-by-query?query=${query}`)
+    }
 }
