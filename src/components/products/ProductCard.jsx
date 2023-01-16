@@ -7,7 +7,7 @@ export default function ProductCard({product}) {
     const imgPath = API_URL+"/"+product.product_main_photo_path
   return (
     <div className={classes.product_card}>
-    <img src={imgPath} className={classes.product_image} alt='dsaf'/>
+    <img src={imgPath} onError={(e)=>{e.target.src=`/img/failure.png`}} className={classes.product_image} alt='dsaf'/>
     <div className={classes.product_card_info}>
     <Link to={`/product/${product.id}`} className='link'>
     <div className={classes.product_card_header}><b>{product.product_name}</b></div>

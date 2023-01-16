@@ -26,7 +26,7 @@ import BlockLoader from '../UI/Loader/BlockLoader';
             {images.length>1 && <img  src='/img/left.png' className={classes.image_prev} onClick={prevImage} alt="product_image"/>}
           
             <CSSTransition in={true} key={currentIndex} timeout={0} classNames={classes.img_cont}>
-                <img className={direction ? classes.product_rigth_image : classes.product_left_image} src={`${API_URL}/${images[currentIndex].photo_path}`} alt='kek'/>
+                <img className={direction ? classes.product_rigth_image : classes.product_left_image} src={`${API_URL}/${images[currentIndex].photo_path}`} onError={(e)=>{e.target.src=`/img/failure.png`}} alt='kek'/>
             </CSSTransition>
             {images.length>1 && <img src='/img/right.png' className={classes.image_next} onClick={nextImage} alt="product_image"/>}
             </div>
