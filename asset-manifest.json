@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/DIPLOM-armMarket-CLIENT/static/css/main.9a842b6d.css",
+    "main.js": "/DIPLOM-armMarket-CLIENT/static/js/main.dd97ba6e.js",
+    "index.html": "/DIPLOM-armMarket-CLIENT/index.html",
+    "main.9a842b6d.css.map": "/DIPLOM-armMarket-CLIENT/static/css/main.9a842b6d.css.map",
+    "main.dd97ba6e.js.map": "/DIPLOM-armMarket-CLIENT/static/js/main.dd97ba6e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9a842b6d.css",
+    "static/js/main.dd97ba6e.js"
+  ]
+}
