@@ -2,90 +2,115 @@ import React, { useState } from "react";
 import { Utils } from "../../utils/utils";
 import classes from "./Products.module.css";
 
-export default function ProductSort({products, showProducts, setShowSortedProducts,setProductLoader}) {
+export default function ProductSort({products, showProducts,showSortedProducts, setShowSortedProducts,setProductLoader}) {
   const [btnIndex, setBtnIndex] = useState(0);
     
 const changeIndex = (index) =>{
     setBtnIndex(index)
     setProductLoader(true)
         switch(index){
+           
             case 1:
-                if(showProducts.length !==0){
-                const newProducts = Utils.getSortedArrayByPrice(showProducts)
+             if(showProducts.length !==0){
+                const tmp = showProducts.slice()
+                const newProducts = Utils.getSortedArrayByPrice(tmp)
                 setShowSortedProducts(newProducts)
+                console.log('second')
                 }
-                else{
-                const newProducts = Utils.getSortedArrayByPrice(products)
+                else if(showProducts.length===0){
+                  const tmp = products.slice()
+                const newProducts = Utils.getSortedArrayByPrice(tmp)
                 setShowSortedProducts(newProducts) 
+                console.log('thrid')
               }
               break;
               case 2:
-                if(showProducts.length !==0){
-                const newProducts = Utils.getSortedArrayByPrice(showProducts)
+              if(showProducts.length !==0){
+                  const tmp = showProducts.slice()
+                const newProducts = Utils.getSortedArrayByPrice(tmp)
                 setShowSortedProducts(newProducts.reverse())
                 }
-                else{
-                const newProducts = Utils.getSortedArrayByPrice(products)
+                else if(showProducts.length===0){
+                  const tmp = products.slice()
+                const newProducts = Utils.getSortedArrayByPrice(tmp)
                 setShowSortedProducts(newProducts.reverse()) 
               }
               break;
               case 3:
                 if(showProducts.length !==0){
-                const newProducts = Utils.getSortedArrayByName(showProducts)
+                  const tmp = showProducts.slice()
+                const newProducts = Utils.getSortedArrayByName(tmp)
                 setShowSortedProducts(newProducts)
                 }
-                else{
-                const newProducts = Utils.getSortedArrayByName(products)
+                else if(showProducts.length===0){
+                  const tmp = products.slice()
+                const newProducts = Utils.getSortedArrayByName(tmp)
                 setShowSortedProducts(newProducts) 
               }
               break;
               case 4:
-                if(showProducts.length !==0){
-                    const newProducts = Utils.getSortedArrayByName(showProducts)
+               
+                   if(showProducts.length !==0){
+                  const tmp = showProducts.slice()
+                    const newProducts = Utils.getSortedArrayByName(tmp)
                     setShowSortedProducts(newProducts.reverse())
                     }
-                    else{
-                    const newProducts = Utils.getSortedArrayByName(products)
+                    else if(showProducts.length===0){
+                      const tmp = products.slice()
+                    const newProducts = Utils.getSortedArrayByName(tmp)
                     setShowSortedProducts(newProducts.reverse()) 
                   }
               break;
               case 5:
+              
                 if(showProducts.length !==0){
-                const newProducts = Utils.getSortedArrayByDate(showProducts)
+                  const tmp = showProducts.slice()
+                const newProducts = Utils.getSortedArrayByDate(tmp)
                 setShowSortedProducts(newProducts)
+                console.log('second')
                 }
-                else{
-                const newProducts = Utils.getSortedArrayByDate(products)
+                else if(showProducts.length===0){
+                  const tmp = products.slice()
+                const newProducts = Utils.getSortedArrayByDate(tmp)
                 setShowSortedProducts(newProducts) 
+                console.log('thrid')
               }
+          
               break;
               case 6:
+              
                 if(showProducts.length !==0){
-                    const newProducts = Utils.getSortedArrayByDate(showProducts)
+                  const tmp = showProducts.slice()
+                    const newProducts = Utils.getSortedArrayByDate(tmp)
                     setShowSortedProducts(newProducts.reverse())
                     }
-                    else{
-                    const newProducts = Utils.getSortedArrayByDate(products)
+                    else if(showProducts.length===0){
+                      const tmp = products.slice()
+                    const newProducts = Utils.getSortedArrayByDate(tmp)
                     setShowSortedProducts(newProducts.reverse()) 
                   }
               break;
               case 7:
-                if(showProducts.length !==0){
-                const newProducts = Utils.getSortedArrayByTime(showProducts)
+               if(showProducts.length !==0){
+                  const tmp = showProducts.slice()
+                const newProducts = Utils.getSortedArrayByTime(tmp)
                 setShowSortedProducts(newProducts)
                 }
-                else{
-                const newProducts = Utils.getSortedArrayByTime(products)
+                else if(showProducts.length===0){
+                  const tmp = products.slice()
+                const newProducts = Utils.getSortedArrayByTime(tmp)
                 setShowSortedProducts(newProducts) 
               }
               break;
               case 8:
-                if(showProducts.length !==0){
-                    const newProducts = Utils.getSortedArrayByTime(showProducts)
+               if(showProducts.length !==0){
+                  const tmp = showProducts.slice()
+                    const newProducts = Utils.getSortedArrayByTime(tmp)
                     setShowSortedProducts(newProducts.reverse())
                     }
-                    else{
-                    const newProducts = Utils.getSortedArrayByTime(products)
+                    else if(showProducts.length===0){
+                      const tmp = products.slice()
+                    const newProducts = Utils.getSortedArrayByTime(tmp)
                     setShowSortedProducts(newProducts.reverse()) 
                   }
               break;
@@ -190,6 +215,7 @@ const changeIndex = (index) =>{
       >
         ժամի <b>&#8650;</b>
       </button>
+      <button className={classes.resetSort}  onClick={() => changeIndex(0)}>Վերականգնել</button>
     </div>
   );
 }

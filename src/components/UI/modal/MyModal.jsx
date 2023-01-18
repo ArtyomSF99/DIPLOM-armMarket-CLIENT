@@ -12,7 +12,6 @@ const MyModal = ({children, visible, setVisible}) => {
 
         <div className={rootClasses.join(' ')} onClick={() => {
             setExit(true)
-            console.log("hello")
             setTimeout(() =>{
                 setVisible(false)
                 setExit(false)

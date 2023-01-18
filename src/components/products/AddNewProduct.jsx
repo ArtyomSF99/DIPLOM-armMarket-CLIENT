@@ -48,7 +48,7 @@ export default function AddNewProduct({categories, attributes, selectedCategory}
       if(readyAttributes[i].attribute_value.length){
         count +=1
       }
-      if(count ===3){
+      if(count === categoryAttributes.length){
         res = true
       }
     }
@@ -67,9 +67,11 @@ export default function AddNewProduct({categories, attributes, selectedCategory}
   const test = () =>{
     // const newPath = `${location.pathname}/gsagads`;
     // console.log(newPath)
-      console.log(JSON.stringify(productDiscription))
+      // console.log(JSON.stringify(productDiscription))
     //   window.location.replace(newPath);
     // navigate('/home')
+    console.log(readyAttributes)
+    console.log(categoryAttributes)
   }
   useEffect(() => {
     if( imgArray.length===0 || !productName || !productDiscription 

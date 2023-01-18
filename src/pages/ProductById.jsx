@@ -8,10 +8,13 @@ import MyProductButton from "../components/UI/button/MyProductButton";
 import { API_URL } from "../http";
 import BlockLoader from "../components/UI/Loader/BlockLoader";
 import { Link } from "react-router-dom";
+import MyModal from "../components/UI/modal/MyModal";
 
 export default function ProductById() {
   const params = useParams();
   const [product, setProduct] = useState({});
+  const [myModal, setMyModal] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     ProductService.getProductById(params.id)
@@ -19,9 +22,17 @@ export default function ProductById() {
   }, []);
   return (
     <div className="main_responsiv">
+         <MyModal  visible={myModal} setVisible={setMyModal}>
+         <div className="product_slider_modal">
+         <ProductImageSlider setMyModal={setMyModal} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} images={product.images_path}/>
+         </div>
+    
+    </MyModal>
       <div className="product_by_id_container">
+        <div className="product_by_id_image_slider_container">
+        <ProductImageSlider currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} setMyModal={setMyModal} images={product.images_path} />
 
-        <ProductImageSlider images={product.images_path} />
+        </div>
         <div className="product_by_id_header">
           <b>{product.product_params && product.product_params.product_name}</b>
         </div>

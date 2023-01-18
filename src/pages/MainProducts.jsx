@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ProductCard from '../components/products/ProductCard'
+import ProductList from '../components/products/ProductList'
 import ProductSearch from '../components/products/ProductSearch'
 import ProductSort from '../components/products/ProductSort'
 
@@ -41,7 +42,11 @@ export default function MainProducts() {
       
     }
   const test = () =>{
+    console.log(products)
+    
+    console.log(showProducts)
     console.log(showSortedProducts)
+ 
   }
   const goBack = () =>{
     const category = Utils.getOneCategory(categories, thisCategoryName)
@@ -90,7 +95,7 @@ export default function MainProducts() {
      
       </div>
       <div className='all_products_sort_container'> 
-        <ProductSort setShowSortedProducts={setShowSortedProducts} products={products} showProducts={showProducts} setProductLoader={setProductsLoader}/>
+        <ProductSort showSortedProducts={showSortedProducts} setShowSortedProducts={setShowSortedProducts} products={products} showProducts={showProducts} setProductLoader={setProductsLoader}/>
       </div>
       <div className='all_products_container'>
         <div className='all_products_search_container'>
@@ -104,16 +109,17 @@ export default function MainProducts() {
         :showProducts.length ===0 && !firstReq
         ?<div className='all_products'>
           <div>{thisCategoryName}</div>
-            {(showSortedProducts.length ===0?products:showSortedProducts).map(el =>(
-              <ProductCard key={el.id} product = {el}/>
-            ))}
+            {(showSortedProducts.length ===0
+            ?<ProductList productArray={products}/>
+            :<ProductList productArray={showSortedProducts}/>)}
           <button onClick={test}>test </button>
         </div>
         :<div className='all_products'>
           <div>{thisCategoryNameShow}</div>
-            {(showSortedProducts.length ===0?showProducts:showSortedProducts).map(el =>(
-           <ProductCard key={el.id} product = {el}/>
-            ))}
+            {(showSortedProducts.length ===0
+            ?<ProductList productArray={showProducts}/>
+            :<ProductList productArray={showSortedProducts}/>
+            )}
             {showProducts.length ===0 && <div className='all_products_alert'>
                 Այս բաժնում դեռ չկան հայտարարություններ
             </div>}
