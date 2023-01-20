@@ -19,7 +19,7 @@ const MyModal = ({children, visible, setVisible}) => {
             
             }}>
             <div className={exit?cl.myModalContentExit:cl.myModalContent} onClick={(e) => e.stopPropagation()}>
-                {children}
+              {children}
             </div>
         </div>
 

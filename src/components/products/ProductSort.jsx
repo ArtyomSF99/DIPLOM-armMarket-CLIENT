@@ -215,7 +215,7 @@ const changeIndex = (index) =>{
       >
         ժամի <b>&#8650;</b>
       </button>
-      <button className={classes.resetSort}  onClick={() => changeIndex(0)}>Վերականգնել</button>
+      <button className={classes.reset_sort}  onClick={() => changeIndex(0)}>Վերականգնել</button>
     </div>
   );
 }

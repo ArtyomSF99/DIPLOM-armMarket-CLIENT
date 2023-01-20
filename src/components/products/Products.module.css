@@ -408,4 +408,16 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  -webkit-animation: scale-up-ver-top 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: scale-up-ver-top 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+.reset_sort{
+  box-sizing: border-box;
+  border: none;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  color: white;
+  background-color: #09c409;
+  margin-top: 1em;
+  cursor: pointer;
 }

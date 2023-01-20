@@ -106,7 +106,7 @@ export default function AddNewProduct({categories, attributes, selectedCategory}
     formData.append('time', time)
      const response = await ProductService.createProduct(formData, selectedCategoryObject.name, productFolder )
     console.log(response.data)
-    navigate(`/my-products`)  
+    navigate(`/product/${response.data.product.id}`)  
   }
 
   const removeShowImage = (id) => {

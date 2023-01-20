@@ -16,7 +16,7 @@ export default class CategoriesService {
     
     static async createCategory(name, parent, main_parent) {
         try{
-            return $api.post(`${API_URL}/category`, {
+            return $api.post(`/category`, {
                 "name":name,
                 "parent":parent,
                 "main_parent":main_parent
@@ -29,7 +29,7 @@ export default class CategoriesService {
     }
     static async updateCategory(id, name, old_name) {
         try{
-            return $api.put(`${API_URL}/category`, {
+            return $api.put(`/category`, {
                 "id":id,
                 "name":name,
                 "old_name": old_name
@@ -42,7 +42,7 @@ export default class CategoriesService {
     }
     static async deleteCategory(id, name) {
         try{
-            return $api.delete(`${API_URL}/category/${id}?name=${name}`)
+            return $api.delete(`/category/${id}?name=${name}`)
         }catch(e){
             console.log(e)
         }
@@ -60,7 +60,7 @@ export default class CategoriesService {
 
     static async createAttribute(category_id, attribute_name) {
         try{
-            return $api.post(`${API_URL}/attribute`, {
+            return $api.post(`/attribute`, {
                 "category_id": category_id,
                 "attribute_name": attribute_name
             })
@@ -71,7 +71,7 @@ export default class CategoriesService {
 
     static async updateAttribute(id, new_attribute_name) {
         try{
-            return $api.put(`${API_URL}/attribute`, {
+            return $api.put(`/attribute`, {
                 "id":id,
                 "new_attribute_name": new_attribute_name
             })
@@ -81,7 +81,7 @@ export default class CategoriesService {
     }
     static async deleteAttribute(id) {
         try{
-            return $api.delete(`${API_URL}/attribute/${id}`)
+            return $api.delete(`/attribute/${id}`)
         }catch(e){
             console.log(e)
         }

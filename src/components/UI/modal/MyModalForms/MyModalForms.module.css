@@ -1,0 +1,64 @@
+.add_opinion_container{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em;
+    width: 70vh;
+}
+
+.add_opinion_textarea{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 100%;
+}
+.confirm_form_container{
+    width: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.confirm_btns{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    margin-top: 3em;
+}
+.yes_btn{
+    box-sizing: border-box;
+    padding: 0.5em;
+    background-color: green;
+    color: white;
+    width: 15vh;
+    border: none;
+    font-size: 1em;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+.no_btn{
+    box-sizing: border-box;
+    padding: 0.5em;
+    background-color: red;
+    color: white;
+    width: 15vh;
+    border: none;
+    font-size: 1em;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.edit_form_container{
+    box-sizing: border-box;
+    padding: 1em;
+    width: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.edit_btn{
+    margin-top: 1em;
+}
