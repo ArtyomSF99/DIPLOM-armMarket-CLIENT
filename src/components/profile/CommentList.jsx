@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import MyAvatar from '../UI/avatar/MyAvatar'
 import classes from './User.module.css'
 
@@ -10,6 +11,11 @@ export default function CommentList({user, opinions, setDeleteOpinionModal,setEd
         {opinions && 
         opinions.map(el =>(
             <div key={el.id} className={classes.comment_block}>
+        {my_info.id !== el.sender_user_id &&
+        <div className={classes.comment_btns}>
+            <img className={classes.comment_delete}  src='/img/report.png' alt='report' />
+        </div>
+        }
         {my_info.id === el.sender_user_id &&
         <div className={classes.comment_btns}>
         <img onClick={() => {
@@ -19,15 +25,19 @@ export default function CommentList({user, opinions, setDeleteOpinionModal,setEd
             setDeleteOpinionModal(true)
             setSelectedObj(el)}} className={classes.comment_delete} src='/img/delete.png' alt='edit'/>
         </div>
+        
         }
         
           <div className={classes.comment_avatar}>
             <MyAvatar name={el.user_name} size={1}/>
           </div>
           <div className={classes.comment_body}>
+          <Link className='link' to={my_info.id === el.sender_user_id?`/my-profile/${my_info.id}`:`/user-profile/${el.sender_user_id}`}>
           <div className={classes.comment_sender_name}>
                 {el.user_name}
             </div>
+          </Link>
+         
             <pre className={classes.comment_text}>
                 {el.opinion}
                 </pre>

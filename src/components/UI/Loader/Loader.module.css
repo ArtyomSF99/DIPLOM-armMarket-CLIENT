@@ -120,3 +120,12 @@
           opacity: 0.2;
         }
       }
+.server_response{
+        min-width: 70vh;
+        box-sizing: border-box;
+        padding: 1em;
+        display: flex;
+        align-items: center;
+        font-size: 1.2em;
+        color: blue;
+}

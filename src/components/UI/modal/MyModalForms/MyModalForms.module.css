@@ -62,3 +62,14 @@
 .edit_btn{
     margin-top: 1em;
 }
+
+.server_response{
+    box-sizing: border-box;
+    min-width: 70vh;
+    min-height: 50vh;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+}

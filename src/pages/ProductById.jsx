@@ -98,7 +98,7 @@ export default function ProductById() {
               </div>
             ) : (
               <div className="product_by_id_user_avatar">
-              <MyAvatar name={product.product_user.first_name} />
+              <MyAvatar name={product.product_user.first_name} size={1}/>
               </div>
               
             )}

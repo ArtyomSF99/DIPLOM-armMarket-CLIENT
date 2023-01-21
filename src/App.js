@@ -7,15 +7,19 @@ import {useDispatch, useSelector} from "react-redux"
 import './styles/App.css';
 import Loader from "./components/UI/Loader/Loader";
 import CategoriesService from "./services/CategoriesService";
-import { Utils } from "./utils/utils";
 import ProductService from "./services/ProductService";
+import ServerResponseModal from "./components/UI/modal/ServerResponseModal";
 
 
 
 function App() {
   const dispatch = useDispatch()
   const isAuth = useSelector( state => state.isAuth.isAuth)
+  const globalModal = useSelector(state => state.app.globalModal)
+  const serverResponse = useSelector(state => state.app.serverResponse)
+
   const[isLoading, setIsLoading] = useState(false)
+  
 
   useEffect( () =>{
    
@@ -52,6 +56,7 @@ function App() {
       ?<Loader/>
       :<BrowserRouter>
           <Navbar/>
+          <ServerResponseModal  visible={globalModal} setVisible={() => dispatch({type:"CHANGE_GLOBAL_MODAL", payload:false})} message={serverResponse}/>
           <AppRouter/>  
         </BrowserRouter>}
 

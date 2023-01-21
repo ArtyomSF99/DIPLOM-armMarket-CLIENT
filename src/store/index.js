@@ -6,6 +6,7 @@ import { productsReducer } from "./productsReducer"
 import { authReducer } from "./authReducer"
 import { categoriesReducer } from "./categoriesReduce"
 import thunk from 'redux-thunk';
+import { appReducer } from "./appReducer"
 
 
 const rootReducer = combineReducers({
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     users: usersReducer,
     products: productsReducer,
     isAuth: authReducer,
-    categories: categoriesReducer
+    categories: categoriesReducer,
+    app: appReducer
 })
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))

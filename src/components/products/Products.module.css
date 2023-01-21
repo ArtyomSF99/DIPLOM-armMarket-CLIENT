@@ -420,4 +420,17 @@
   background-color: #09c409;
   margin-top: 1em;
   cursor: pointer;
+  font-size: 0.6em;
+}
+.product_btns{
+  position: absolute;
+  right: 15%;
+  display: flex;
+}
+.product_delete{
+  width: 0.7em;
+  height: 0.7em;
+  top: 0%;
+  cursor: pointer;
+  
 }

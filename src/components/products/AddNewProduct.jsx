@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, useLocation, useNavigate,} from 'react-router'
 import MyHr from '../UI/hr/MyHr'
 import ProductService from '../../services/ProductService'
@@ -29,8 +29,9 @@ export default function AddNewProduct({categories, attributes, selectedCategory}
   const[formValid, setFormValid] = useState(false)
   const[isLoading, setIsloading] = useState(false)
   const user = useSelector(state => state.user.user)
+  const products = useSelector(state => state.products.products)
   const selectedCategoryObject = categories.filter(el => el.name === selectedCategory)[0]
-  
+  const dispatch = useDispatch()
   const navigate = useNavigate();
 
 
@@ -105,8 +106,13 @@ export default function AddNewProduct({categories, attributes, selectedCategory}
     formData.append('date', date)
     formData.append('time', time)
      const response = await ProductService.createProduct(formData, selectedCategoryObject.name, productFolder )
+    if(response.status === 200) {
+      const newProducts = products
+      newProducts.push(response.data.product)
+          dispatch({type:"SAVE_PRODUCTS", payload:newProducts})
+    }
     console.log(response.data)
-    navigate(`/product/${response.data.product.id}`)  
+    navigate(`/product/${response.data.product.id}`) 
   }
 
   const removeShowImage = (id) => {

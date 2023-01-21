@@ -41,4 +41,13 @@ export default class ProductService {
     static async getProductByQuery(query) {
         return $api.get(`/products-by-query?query=${query}`)
     }
+    static async deleteProduct(id, folder, category_id) {
+        try{
+            return $api.delete(`/product/${id}?product_folder=${folder}&category_id=${category_id}`)
+        }catch(e){
+            console.log(e)
+        }
+      
+        
+    }
 }

@@ -37,6 +37,9 @@ const Navbar = () => {
         <Link to={`/my-profile/${user.id}`}>
             <MyButton>My Profile</MyButton>
         </Link>
+        <Link to={`/my-chats`}>
+            <MyButton>My Chats</MyButton>
+        </Link>
         </div>
     )
 }

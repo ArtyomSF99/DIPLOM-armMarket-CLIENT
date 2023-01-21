@@ -12,7 +12,7 @@ export default function ConfirmForm(props) {
         <h3>{props.text}</h3>
         <div className={classes.confirm_btns}>
         <button onClick={() => {
-            props.setDeleteOpinionLoader(true)
+            props.setDeleteLoader(true)
             props.modalAnswerYes(props.selectedObj)}} className={classes.yes_btn}>Այո</button>
         <button onClick={() =>props.modalAnswerNo(false)} className={classes.no_btn}>Ոչ</button>
         </div>

@@ -6,12 +6,16 @@ export default function MyAvatar({name, size}) {
     size ===1
     ?name && <div className={classes.avatar_container}>
     <div className={classes.avatar_char_smile}>
-    {name[0].toUpperCase()}
+    <b>    {name[0].toUpperCase()}</b>
+
     </div>
     </div>
     :name && <div className={classes.avatar_container}>
     <div className={classes.avatar_char_large}>
+    <b>
     {name[0].toUpperCase()}
+    </b>
+  
     </div>
     </div>
   )

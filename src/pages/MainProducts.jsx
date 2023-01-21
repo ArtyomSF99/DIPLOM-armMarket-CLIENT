@@ -9,6 +9,8 @@ import AllProductsCategorySelect from '../components/UI/list/AllProductsCategory
 
 import BlockLoader from '../components/UI/Loader/BlockLoader'
 import Loader from '../components/UI/Loader/Loader'
+import MyModal from '../components/UI/modal/MyModal'
+import ConfirmForm from '../components/UI/modal/MyModalForms/ConfirmForm'
 import ProductService from '../services/ProductService'
 import { Utils } from '../utils/utils'
 
@@ -22,8 +24,11 @@ export default function MainProducts() {
   const[showProducts, setShowProducts] = useState([])
   const[showSortedProducts, setShowSortedProducts] = useState([])
   const[productsLoader, setProductsLoader] = useState(false)
+  const[selectedObj, setSelectedObj] = useState({})
+  const[deleteProductModal, setDeleteProductModal] = useState(false)
+  const[deleteProductLoader, setDeleteProductLoader] = useState(false)
   const categories = useSelector(state => state.categories.categories)
-
+  const dispatch = useDispatch()
 
   const getCategoryProducts = async (category) => {
       setProductsLoader(true)
@@ -41,6 +46,25 @@ export default function MainProducts() {
       setThisCategoryNameShow(category.name)
       
     }
+    const deleteProduct = async (product) =>{
+      const product_id = product.id
+      const product_folder = product.product_folder
+      const category_id = product.product_category_id
+      console.log(product)
+      
+      const response =  await ProductService.deleteProduct(product_id, product_folder, category_id)
+      if(response.status === 200) {
+          dispatch({type:"SET_SERVER_RESPONSE", payload:"Ձեր հայտարարությունը հաջողությամբ ջնջված է"})
+          dispatch({type:"CHANGE_GLOBAL_MODAL", payload:true})
+          const newProducts = products.filter(el => el.id !== product.id)
+          dispatch({type:"SAVE_PRODUCTS", payload:newProducts})
+      }
+      console.log(response)
+      setSelectedObj({})
+      setDeleteProductLoader(false)
+      setDeleteProductModal(false)
+     }
+  
   const test = () =>{
     console.log(products)
     
@@ -110,15 +134,15 @@ export default function MainProducts() {
         ?<div className='all_products'>
           <div>{thisCategoryName}</div>
             {(showSortedProducts.length ===0
-            ?<ProductList productArray={products}/>
-            :<ProductList productArray={showSortedProducts}/>)}
+            ?<ProductList productArray={products} setSelectedObj={setSelectedObj} setDeleteProductModal={setDeleteProductModal}/>
+            :<ProductList productArray={showSortedProducts} setSelectedObj={setSelectedObj} setDeleteProductModal={setDeleteProductModal}/>)}
           <button onClick={test}>test </button>
         </div>
         :<div className='all_products'>
           <div>{thisCategoryNameShow}</div>
             {(showSortedProducts.length ===0
-            ?<ProductList productArray={showProducts}/>
-            :<ProductList productArray={showSortedProducts}/>
+            ?<ProductList productArray={showProducts} setSelectedObj={setSelectedObj} setDeleteProductModal={setDeleteProductModal}/>
+            :<ProductList productArray={showSortedProducts} setSelectedObj={setSelectedObj} setDeleteProductModal={setDeleteProductModal}/>
             )}
             {showProducts.length ===0 && <div className='all_products_alert'>
                 Այս բաժնում դեռ չկան հայտարարություններ
@@ -130,6 +154,9 @@ export default function MainProducts() {
        
      
       </div>
+      <MyModal  visible={deleteProductModal} setVisible={setDeleteProductModal}>
+      <ConfirmForm text="Ցանկանու՞մ եք ջնջել Ձեր Հայտարարությունը" selectedObj={selectedObj} modalAnswerYes={deleteProduct} deleteProductLoader={deleteProductLoader} setDeleteLoader={setDeleteProductLoader} modalAnswerNo={setDeleteProductModal}/>
+    </MyModal>
     </div>
   )
 }
