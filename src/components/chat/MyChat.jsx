@@ -11,7 +11,7 @@ import classes from './Chat.module.css'
 import ChatList from './ChatList';
 
 function MyChat({ senderId, receiverId }) {
-  const [socket] = useState(socketio(`https://diplom-arm-market-server.onrender.com:80`,{
+  const [socket] = useState(socketio(`https://diplom-arm-market-server.onrender.com:5002`,{
     timeout:0
   }));
   const [message, setMessage] = useState('');
