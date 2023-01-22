@@ -6,10 +6,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(140, 254, 247);
+    background: linear-gradient(323deg, #dc0d18 0%, #2420d0 55%, #bb1ae7 100%);
+    background-size: 200% 200%;
+    background-repeat: no-repeat;
     color: white;
     cursor:default;
-}
+    animation: color-animation 25s  infinite;
+    animation-fill-mode: forwards;
+  }
+  @keyframes color-animation {
+    0% {
+        background-position: 100% 100%;
+    }
+    50% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+  }
+
 .avatar_char_smile{
     font-size: 1.2em;
 }

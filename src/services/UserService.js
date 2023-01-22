@@ -45,8 +45,22 @@ export default class UserService {
             return $api.delete(`/user/opinion/${id}`)
         }catch(e){
             console.log(e)
+        } 
+    }
+    static async getUserChats(id) {
+        return $api.get(`/user/chats/${id}`)
+    }
+    static async createUserChat(my_id, user_id, user_avatar_path, user_name){
+        try{
+            return $api.post(`/user/create-chat`, {
+                "my_id": my_id,
+                "user_id": user_id,
+                "user_avatar_path":user_avatar_path,
+                "user_name":user_name
+            })
+        }catch(e){
+            console.log(e)
         }
-      
-        
     }
 }
+

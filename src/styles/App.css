@@ -1010,6 +1010,36 @@ opacity: 1;
     }
   }
 
+.my_chats_page_container{
+    margin-top: 5vh;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 80vh;
+    
+
+}
+
+.my_chats_container{
+    box-sizing: border-box;
+    padding: 0.5em;
+    width: 30%;
+    height: 100%;
+    background-color: rgb(249, 247, 247);
+    border-radius: 0.5em;
+}
+.my_selected_chat{
+    box-sizing: border-box;
+    padding: 0.5em;
+    width: 60%;
+    height: 100%;
+    margin-left: 5%;
+    background-color: rgb(249, 247, 247);
+    border-radius: 0.5em;
+    -webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
 .my_hr{
     width: 80%;
     height: 0;

@@ -1,5 +1,6 @@
 const defaultState = {
-    user: {}
+    user: {},
+    my_chats: []
 }
 
 export const userReducer = (state = defaultState, action) =>{
@@ -8,6 +9,8 @@ export const userReducer = (state = defaultState, action) =>{
             return {...state, user: action.payload}
         case "DELETE_USER":
             return {...state, user:action.payload}
+        case "SAVE_MY_CHATS":
+            return {...state, my_chats: action.payload}
       default:
         return state
     }

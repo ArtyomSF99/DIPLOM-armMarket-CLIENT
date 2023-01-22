@@ -9,6 +9,7 @@ import Loader from "./components/UI/Loader/Loader";
 import CategoriesService from "./services/CategoriesService";
 import ProductService from "./services/ProductService";
 import ServerResponseModal from "./components/UI/modal/ServerResponseModal";
+import UserService from "./services/UserService";
 
 
 
@@ -30,7 +31,9 @@ function App() {
         dispatch({type:"SAVE_USER", payload:response.data.user})
         dispatch({type:"CHANGE_AUTH", payload:!isAuth})
         console.log(isAuth)
-        
+        UserService.getUserChats(response.data.user.id).then(response =>{
+          dispatch({type:"SAVE_MY_CHATS", payload:response.data})
+        })
       }
       )
     }

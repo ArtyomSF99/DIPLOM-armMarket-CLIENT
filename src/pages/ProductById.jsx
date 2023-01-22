@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import ProductService from "../services/ProductService";
 import ProductImageSlider from "../components/products/ProductImageSlider";
 import MyHr from "../components/UI/hr/MyHr";
@@ -9,17 +9,37 @@ import { API_URL } from "../http";
 import BlockLoader from "../components/UI/Loader/BlockLoader";
 import { Link } from "react-router-dom";
 import MyModal from "../components/UI/modal/MyModal";
+import { useSelector } from "react-redux";
+import UserService from "../services/UserService";
 
 export default function ProductById() {
   const params = useParams();
   const [product, setProduct] = useState({});
   const [myModal, setMyModal] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const chats = useSelector(state => state.user.my_chats)
+  const navigate = useNavigate()
+  const my_info = useSelector(state => state.user.user)
   useEffect(() => {
     ProductService.getProductById(params.id)
       .then((response) => setProduct(response.data)).then(() =>console.log(product))
   }, []);
+
+  const createNewChat = async (user) =>{
+    const chat_test = chats.filter(el => el.user_id === user.id)
+    console.log(chat_test)
+    if(chat_test.length === 0){
+       await UserService.createUserChat(my_info.id, user.id, user.avatar_path, `${user.first_name} ${user.last_name}`)
+     navigate(`/my-chats`)
+    }
+    else{
+      navigate(`/my-chats?chat_id=${chat_test[0].id}`)
+    }
+   
+    console.log(chats)
+    console.log(user)
+  }
+
   return (
     <div className="main_responsiv">
          <MyModal  visible={myModal} setVisible={setMyModal}>
@@ -137,7 +157,7 @@ export default function ProductById() {
             </div>
             <MyHr />
             <div>
-              <MyProductButton>Գրել</MyProductButton>
+              <MyProductButton onClick={() => createNewChat(product.product_user)}>Գրել</MyProductButton>
             </div>
           </div>
         ) : (

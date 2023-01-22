@@ -40,6 +40,9 @@ const Navbar = () => {
         <Link to={`/my-chats`}>
             <MyButton>My Chats</MyButton>
         </Link>
+        <Link to={`/my-chat2`}>
+            <MyButton>My Chat2</MyButton>
+        </Link>
         </div>
     )
 }
