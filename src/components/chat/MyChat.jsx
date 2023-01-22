@@ -9,11 +9,15 @@ import MyInput1 from '../UI/input/MyInput1';
 import BlockLoader from '../UI/Loader/BlockLoader';
 import classes from './Chat.module.css'
 import ChatList from './ChatList';
-
+//`https://diplom-arm-market-server.onrender.com`
 function MyChat({ senderId, receiverId }) {
-  const [socket] = useState(socketio(`https://diplom-arm-market-server.onrender.com:8080`,{
-    timeout:0
-  }));
+    const connectionOptions = {
+        "force new connection": true,
+        reconnectionAttempts: "Infinity",
+        timeout: 60000,
+        transports: ["websocket"],
+      };
+  const [socket] = useState(socketio(`https://diplom-arm-market-server.onrender.com`, connectionOptions));
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(true)

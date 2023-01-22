@@ -1,8 +1,8 @@
 import axios from "axios";
 import AuthService from "../services/AuthService";
 
-export const API_URL = "https://diplom-arm-market-server.onrender.com" // `http://localhost:5000`
-//`https://diplom-arm-market-server.onrender.com`  
+export const API_URL =  `http://localhost:5001`
+//`https://diplom-arm-market-server.onrender.com`  "https://diplom-arm-market-server.onrender.com" //
 
 const $api = axios.create({
     withCredentials: true,
