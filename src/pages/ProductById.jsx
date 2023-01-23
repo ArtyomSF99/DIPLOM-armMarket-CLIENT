@@ -9,7 +9,7 @@ import { API_URL } from "../http";
 import BlockLoader from "../components/UI/Loader/BlockLoader";
 import { Link } from "react-router-dom";
 import MyModal from "../components/UI/modal/MyModal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import UserService from "../services/UserService";
 
 export default function ProductById() {
@@ -19,7 +19,9 @@ export default function ProductById() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const chats = useSelector(state => state.user.my_chats)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const my_info = useSelector(state => state.user.user)
+  const my_chats = useSelector(state => state.user.my_chats)
   useEffect(() => {
     ProductService.getProductById(params.id)
       .then((response) => setProduct(response.data)).then(() =>console.log(product))
@@ -29,19 +31,19 @@ export default function ProductById() {
     const chat_test = chats.filter(el => el.user_id === user.id)
     console.log(chat_test)
     if(chat_test.length === 0){
-       await UserService.createUserChat(my_info.id, user.id, user.avatar_path, `${user.first_name} ${user.last_name}`)
+       await UserService.createUserChat(my_info.id, user.id, user.avatar_path || "", `${user.first_name} ${user.last_name}`).then(response =>  dispatch({type:"SAVE_MY_CHATS", payload:[...my_chats, response.data]}))
      navigate(`/my-chats`)
     }
     else{
       navigate(`/my-chats?chat_id=${chat_test[0].id}`)
     }
-   
+    console.log(my_info)
     console.log(chats)
     console.log(user)
   }
 
   return (
-    <div className="main_responsiv">
+  my_info &&<div className="main_responsiv">
          <MyModal  visible={myModal} setVisible={setMyModal}>
          <div className="product_slider_modal">
          <ProductImageSlider setMyModal={setMyModal} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} images={product.images_path}/>
@@ -107,7 +109,7 @@ export default function ProductById() {
             {product.product_params && product.product_params.exhibition_time}
           </div>
         </div>
-        {product.product_user ? (
+        {product.product_user? (
           <div className="product_by_id_user_container">
             {product.product_user.avatar_path ? (
               <div className="product_by_id_user_avatar">
@@ -157,7 +159,7 @@ export default function ProductById() {
             </div>
             <MyHr />
             <div>
-              <MyProductButton onClick={() => createNewChat(product.product_user)}>Գրել</MyProductButton>
+              {product.product_user.id !== my_info.id && <MyProductButton onClick={() => createNewChat(product.product_user)}>Գրել</MyProductButton>}
             </div>
           </div>
         ) : (

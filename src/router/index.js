@@ -10,7 +10,7 @@ import Registration from "../pages/Registration";
 import MyProfile from "../pages/MyProfile";
 import UserProfile from "../pages/UserProfile";
 import MyChats from "../pages/MyChats";
-import MyChat2 from "../components/chat/MyChat2";
+
 
 
 
@@ -23,8 +23,7 @@ export const privateRoutes = [
     {path: '/product/:id', component: <ProductById/>, exact: true},
     {path: '/my-profile/:id', component: <MyProfile/>, exact: true},
     {path: '/user-profile/:id', component: <UserProfile/>, exact: true},
-    {path: '/my-chats', component: <MyChats/>, exact: true},
-    {path: '/my-chat2', component: <MyChat2/>, exact: true}
+    {path: '/my-chats', component: <MyChats/>, exact: true}
 
 ]
 
