@@ -17,7 +17,7 @@ function MyChat({ senderId, receiverId }) {
         timeout: 60000,
         transports: ["websocket"],
       };
-  const [socket] = useState(socketio(`https://diplom-arm-market-server.onrender.com`, connectionOptions));
+  const [socket] = useState(socketio(API_URL, connectionOptions));
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(true)

@@ -2,15 +2,15 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
-import { publicRoutes, privateRoutes } from '../router';
+import { publicRoutes, privateRoutes, appRoutes } from '../router';
 import {useSelector} from "react-redux"
 
 const AppRouter = () => {
-    const isAuth = useSelector( state => state.isAuth.isAuth)
+    const my_info = useSelector(state => state.user.user)
     return (
-            isAuth
-            ?<Routes>
-            {privateRoutes.map(route =>
+         
+    my_info &&  <Routes>
+            {appRoutes(my_info.status).map(route =>
                 <Route
                     element={
                         route.component}
@@ -18,15 +18,7 @@ const AppRouter = () => {
             )}
             <Route path="*" element={<Home />} />
             </Routes>
-            :<Routes>
-            {publicRoutes.map(route =>
-                <Route
-                    element={
-                        route.component}
-                    path={route.path} exact={route.exact} key={route.path} />
-                )}
-            <Route path="*" element={<Home />} />
-            </Routes>
+           
             
     )
 }

@@ -31,7 +31,7 @@ function App() {
         localStorage.setItem('token', response.data.accessToken)
         dispatch({type:"SAVE_USER", payload:response.data.user})
         dispatch({type:"CHANGE_AUTH", payload:!isAuth})
-        console.log(isAuth)
+        console.log(response.data)
         UserService.getUserChats(response.data.user.id).then(response =>{
           dispatch({type:"SAVE_MY_CHATS", payload:response.data})
         })
