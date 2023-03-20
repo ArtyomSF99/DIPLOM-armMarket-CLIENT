@@ -35,24 +35,7 @@ export default function Home() {
         isLoading
         ?<Loader/>
         :<div>
-        <button onClick={change}>change</button> 
-        <button onClick={test}>1234656</button>
-        <Link to={`/login`}>
-        <MyButton onClick={LogOut}>LogOut</MyButton>
-        </Link>
-     
-        <Link to={`/category-management`}>
-            <MyButton>CategoryManagement</MyButton>
-        </Link>
-        <Link to={`/add-product`}>
-            <MyButton>AddProduct</MyButton>
-        </Link>
-        <Link to={`/main-products`}>
-            <MyButton>All Products</MyButton>
-        </Link>
-        <Link to={`/main-products`}>
-            <MyButton>My Profile</MyButton>
-        </Link>
+        
     </div>
     
   )
