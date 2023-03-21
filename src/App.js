@@ -60,6 +60,7 @@ function App() {
       ?<Loader/>
       :<BrowserRouter>
           <Navbar/>
+          <div className="mainBackground"/>
           <ServerResponseModal  visible={globalModal} setVisible={() => dispatch({type:"CHANGE_GLOBAL_MODAL", payload:false})} message={serverResponse}/>
           <AppRouter/>  
         </BrowserRouter>}

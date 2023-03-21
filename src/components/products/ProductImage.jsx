@@ -29,7 +29,7 @@ export default function ProductImage({showImagesArray, setShowImagesArray, imgAr
   return (
     <div>
     <div  className={classes.input_container}>
-    <input className={classes.image_input} type="file" onChange={imageHandler}></input>
+    <input className={classes.image_input} type="file" onChange={imageHandler} accept="image/png, image/jpeg" ></input>
   
 
     <img className={classes.show_image} src='/img/photo.svg' alt='avatar'/>
