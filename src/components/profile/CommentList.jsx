@@ -6,17 +6,19 @@ import classes from './User.module.css'
 
 export default function CommentList({user, opinions, setDeleteOpinionModal,setEditOpinionModal,setSelectedObj}) {
     const my_info = useSelector(state => state.user.user)
+    const isAuth = useSelector( state => state.isAuth.isAuth)
+
   return (
     <div className={classes.comment_list_container}>
         {opinions && 
         opinions.map(el =>(
             <div key={el.id} className={classes.comment_block}>
-        {my_info.id !== el.sender_user_id &&
+        {my_info.id !== el.sender_user_id && isAuth &&
         <div className={classes.comment_btns}>
             <img className={classes.comment_delete}  src='/img/report.png' alt='report' />
         </div>
         }
-        {my_info.id === el.sender_user_id &&
+        {my_info.id === el.sender_user_id && isAuth && 
         <div className={classes.comment_btns}>
         <img onClick={() => {
             setEditOpinionModal(true)

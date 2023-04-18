@@ -11,8 +11,11 @@ import ProductService from "./services/ProductService";
 import ServerResponseModal from "./components/UI/modal/ServerResponseModal";
 import UserService from "./services/UserService";
 import TestNavbar from "./components/UI/NavBar/TestNavBar";
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 
+const stripePromise = loadStripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 function App() {
   const dispatch = useDispatch()
@@ -54,7 +57,7 @@ function App() {
     }).catch(e => console.log(e))
   }, [ dispatch])
   return (
-      
+    <Elements stripe={stripePromise}>
       <div className="App">
       {isLoading
       ?<Loader/>
@@ -66,7 +69,8 @@ function App() {
         </BrowserRouter>}
 
       </div>
-   
+      </Elements>
+
     
   );
 }

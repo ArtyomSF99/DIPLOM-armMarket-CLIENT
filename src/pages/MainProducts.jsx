@@ -147,8 +147,6 @@ export default function MainProducts() {
             {showProducts.length ===0 && <div className='all_products_alert'>
                 Այս բաժնում դեռ չկան հայտարարություններ
             </div>}
-            
-            <button onClick={test}>test </button>
         </div>
         }
        
