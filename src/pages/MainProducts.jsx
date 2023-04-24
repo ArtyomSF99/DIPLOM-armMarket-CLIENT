@@ -20,7 +20,8 @@ export default function MainProducts() {
   const[thisCategoryName, setThisCategoryName] = useState('')
   const[thisCategoryNameShow, setThisCategoryNameShow] = useState('')
   const[firstReq, setFirstReq] = useState(false)
-  const products = useSelector(state => state.products.products)
+  const[products,setProducts] = useState(useSelector(state => state.products.products))
+  const reserveProducts = useSelector(state => state.products.products)
   const[showProducts, setShowProducts] = useState([])
   const[showSortedProducts, setShowSortedProducts] = useState([])
   const[productsLoader, setProductsLoader] = useState(false)
@@ -44,6 +45,7 @@ export default function MainProducts() {
       }
       setThisCategoryName(category.parent && category.main_parent?category.parent:category.name)
       setThisCategoryNameShow(category.name)
+      setProducts([])
       
     }
     const deleteProduct = async (product) =>{
@@ -87,6 +89,17 @@ export default function MainProducts() {
     console.log(response.data)
     setShowProducts(response.data)
     setProductsLoader(false)
+    setProducts([])
+  }
+  const searchByRegion = async (region) =>{
+    setProductsLoader(true)
+    const response = await ProductService.getProductByRegion(region)
+    setThisCategoryName('')
+    setThisCategoryNameShow('Որոնման արդյունքները')
+    console.log(response.data)
+    setShowProducts(response.data)
+    setProductsLoader(false)
+    setProducts([])
   }
   const resetCategorySelect = async () =>{
     setProductsLoader(true)
@@ -97,11 +110,11 @@ export default function MainProducts() {
     setTimeout(() =>{
       setProductsLoader(false)
     }, 300)
- 
+    setProducts(reserveProducts)
   }
 
   return (
-    products.length ===0
+    reserveProducts.length ===0
     ?<Loader/>
     :<div className='main_responsiv'>
       <div className='all_products_category_select'>
@@ -123,7 +136,7 @@ export default function MainProducts() {
       </div>
       <div className='all_products_container'>
         <div className='all_products_search_container'>
-          <ProductSearch searchByQuery={searchByQuery}/>
+          <ProductSearch searchByQuery={searchByQuery} searchByRegion={searchByRegion}/>
         </div>
         
         {productsLoader
@@ -136,7 +149,6 @@ export default function MainProducts() {
             {(showSortedProducts.length ===0
             ?<ProductList productArray={products} setSelectedObj={setSelectedObj} setDeleteProductModal={setDeleteProductModal}/>
             :<ProductList productArray={showSortedProducts} setSelectedObj={setSelectedObj} setDeleteProductModal={setDeleteProductModal}/>)}
-          <button onClick={test}>test </button>
         </div>
         :<div className='all_products'>
           <div>{thisCategoryNameShow}</div>

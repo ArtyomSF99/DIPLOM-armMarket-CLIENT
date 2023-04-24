@@ -16,7 +16,6 @@ export default function AddProduct() {
       
           
         </div>
-        <button onClick={() => setSelected(!selected)}>test</button>
     </div>
   )
 }

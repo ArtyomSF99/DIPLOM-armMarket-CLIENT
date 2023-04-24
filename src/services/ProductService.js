@@ -39,6 +39,9 @@ export default class ProductService {
   static async getProductByQuery(query) {
     return $api.get(`/products-by-query?query=${query}`);
   }
+  static async getProductByRegion(region) {
+    return $api.get(`/products/${region}`);
+  }
   static async deleteProduct(id, folder, category_id) {
     try {
       return $api.delete(

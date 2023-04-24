@@ -155,7 +155,6 @@ export default function AddNewProduct({categories, attributes, selectedCategory}
       </div>
       
       </form>
-      <button onClick={test}>test</button>
   </div>
         )   
 }

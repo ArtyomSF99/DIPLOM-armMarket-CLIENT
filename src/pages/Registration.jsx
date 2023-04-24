@@ -31,6 +31,7 @@ export default function Registration() {
     { value: "Սյունիք", key: 7 },
     { value: "Վայոց ձոր", key: 8 },
     { value: "Երևան", key: 9 },
+    { value: "Տավուշ", key: 10 },
   ]);
   const [region, setRegion] = useState("");
   const [password, setPassword] = useState("");

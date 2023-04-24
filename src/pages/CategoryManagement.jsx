@@ -120,7 +120,7 @@ export default function CategoryManagement() {
       </div>
       <TextHeader text="Կառավարում"/>
       <div className='category_management_moderator'>
-      <div className='category_headers'>
+      <div className='category_headers_second'>
         <MyManagementButton onClick={() => setValue(1)}>
           Ավելացնել կատեգորիա
         </MyManagementButton>
@@ -149,7 +149,7 @@ export default function CategoryManagement() {
      
      
       </div>
-      <button onClick={test}>test</button>
+  
       </div>
      
     

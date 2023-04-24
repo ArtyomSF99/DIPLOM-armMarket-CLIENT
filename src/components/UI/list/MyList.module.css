@@ -38,11 +38,13 @@
     margin-right: 5%;
     padding: 3%;
     border: 0.1em solid transparent;
-    border-image: linear-gradient(to left top, transparent 70%, #adf2f7 90%);
     border-image-slice: 1;
-    background-color: #70e8e820;
+    background-color: #0400ff;
     word-break: break-all;
     border-radius: 1em;
+    color: #ffffff;
+    font-size: 0.6em;
+    text-align: center;
   }
 
   .alert{
@@ -51,7 +53,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3vh;
+    font-size: 0.8em;
     color: rgb(25, 152, 72);
   }
 
@@ -92,7 +94,7 @@
   
   .category_list_container::-webkit-scrollbar-thumb {
     border-radius: 0.5em;
-    background-color: #a8b9f8;
+    background-color: #0400ff;
   }
   
   .category_list_container::-webkit-scrollbar-track {

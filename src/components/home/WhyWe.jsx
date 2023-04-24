@@ -16,7 +16,7 @@ export default function WhyWe() {
     }, [hasBeenVisible])
   return (
     <div ref={contentRef} className={styles.whyWeContainer}>
-        <h2 className={`${isVisible? styles.animate : styles.hidden}`}>Ինչու՞ ընտրում մեզ</h2>
+        <h2 className={`${isVisible? styles.animate : styles.hidden}`}>Ինչու՞ են ընտրում մեզ</h2>
         <p className={`${isVisible? styles.animate : styles.hidden}`}>Մենք աշխատում ենք միայն վստահելի մատակարարների հետ՝ երաշխավորելու մեր արտադրանքի բարձր որակը: Մենք նաև տրամադրում ենք գերազանց հաճախորդների աջակցություն և միշտ պատրաստ ենք օգնել ձեզ ցանկացած հարցով: Բացի այդ, մենք առաջարկում ենք արագ առաքում ամբողջ երկրում, որպեսզի կարողանաք ժամանակին ստանալ ձեր պատվերները:</p>
     </div>
   )

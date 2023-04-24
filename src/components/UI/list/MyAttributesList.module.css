@@ -14,7 +14,7 @@
   
   .list_container::-webkit-scrollbar-thumb {
     border-radius: 0.5em;
-    background-color: #47da3f;
+    background-color: #10ab08;
   }
   
   .list_container::-webkit-scrollbar-track {
@@ -39,9 +39,12 @@
     margin-right: 5%;
     padding: 2%;
     border: 0.1em solid transparent;
-    border-image: linear-gradient(to left top, transparent 70%, #34858b 90%);
+    border-radius: 1em;
+    text-align: center;
     border-image-slice: 1;
-    background-color: #47da3f;
+    background-color: #067100;
+    font-size: 0.6em;
+    color: #ffffff;
   }
 
   .alert{
