@@ -77,7 +77,6 @@ export default function MyProfile() {
     <MyModal  visible={deleteProductModal} setVisible={setDeleteProductModal}>
       <ConfirmForm text="Ցանկանու՞մ եք ջնջել Ձեր Հայտարարությունը" selectedObj={selectedObj} modalAnswerYes={deleteProduct} deleteProductLoader={deleteProductLoader} setDeleteLoader={setDeleteProductLoader} modalAnswerNo={setDeleteProductModal}/>
     </MyModal>
-    <button onClick={() => console.log(user)}>test</button>
     </div>
   )
 }

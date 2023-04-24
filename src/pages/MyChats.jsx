@@ -51,7 +51,6 @@ export default function MyChats() {
     </div>
     </CSSTransition>
     </div>
-      <button onClick={() => console.log()}>test</button>
     </div>
   )
 }

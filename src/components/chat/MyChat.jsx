@@ -104,7 +104,6 @@ function MyChat({ senderId, receiverId }) {
         </div>   
         
       </form>
-      <button onClick={() => console.log(messages)}>test</button>
     </div>
   );
 }
