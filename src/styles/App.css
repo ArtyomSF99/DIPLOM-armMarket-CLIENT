@@ -154,8 +154,19 @@ html{
     margin-top: 5%;
     -webkit-animation: slide-in-blurred-left 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
     animation: slide-in-blurred-left 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    display: flex;
 }
-
+.login_text{
+  width: 40%;
+  box-sizing: border-box;
+  padding: 1em;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 .login{
     display: flex;
     flex-direction: column;
