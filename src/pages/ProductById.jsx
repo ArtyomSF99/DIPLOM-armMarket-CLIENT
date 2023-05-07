@@ -199,6 +199,7 @@ export default function ProductById() {
                     Գրել
                   </MyProductButton>
                 )}
+                <div style={{width: '1em'}}/>
                 {product.product_user.id !== my_info.id && isAuth && (
                   <MyProductButton onClick={() => setIsStripeFormVisible(true)}>
                     Գնել

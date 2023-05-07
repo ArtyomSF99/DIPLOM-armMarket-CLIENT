@@ -100,7 +100,7 @@ function MyChat({ senderId, receiverId }) {
         />
       </div>
         <div className={classes.form_btn}>
-        <MyProductButton type="submit">Send</MyProductButton>
+        <MyProductButton type="submit">Ուղարկել</MyProductButton>
         </div>   
         
       </form>

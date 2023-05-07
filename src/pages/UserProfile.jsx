@@ -109,7 +109,6 @@ export default function UserProfile() {
     <MyModal  visible={deleteOpinionModal} setVisible={setDeleteOpinionModal}>
       <ConfirmForm text="Ցանկանու՞մ եք ջնջել Ձեր թողած կարծիքը" selectedObj={selectedObj} modalAnswerYes={deleteOpinion} deleteOpinionLoader={deleteOpinionLoader} setDeleteLoader={setDeleteOpinionLoader} modalAnswerNo={setDeleteOpinionModal}/>
     </MyModal>
-    <button onClick={() => console.log(user)}>test</button>
     </div>
   )
 }
