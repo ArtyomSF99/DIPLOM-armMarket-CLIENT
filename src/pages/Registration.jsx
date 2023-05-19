@@ -167,7 +167,9 @@ export default function Registration() {
     localStorage.setItem("token", response.data.accessToken);
     dispatch({ type: "SAVE_USER", payload: response.data.user });
     dispatch({ type: "CHANGE_AUTH", payload: !isAuth });
-    setIsLoading(false);
+    if(response.status){
+      setIsLoading(false);
+    }
     navigate("/home");
   };
 
