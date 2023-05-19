@@ -163,13 +163,14 @@ export default function Registration() {
       phone,
       date
     );
+      if(response){
+      setIsLoading(false);
+    }
     console.log(response.data);
     localStorage.setItem("token", response.data.accessToken);
     dispatch({ type: "SAVE_USER", payload: response.data.user });
     dispatch({ type: "CHANGE_AUTH", payload: !isAuth });
-    if(response.status){
-      setIsLoading(false);
-    }
+  
     navigate("/home");
   };
 
